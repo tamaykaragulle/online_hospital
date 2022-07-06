@@ -64,7 +64,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                     {
                         if (password_verify($patient_password, $hashed_password))
                         {
-                            echo "password dogru";
                             // Password is correct, so start a new session
                             session_start();
 
@@ -120,7 +119,7 @@ if (!empty($login_err))
   <div class="login-box">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form">
       <div class="form-group">
-        <input type="text" placeholder="Patient Name" name="patient_username" class="form-control <?php echo (!empty($patient_username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $patient_username; ?>">
+        <input type="text" placeholder="Patient Userame" name="patient_username" class="form-control <?php echo (!empty($patient_username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $patient_username; ?>">
         <span class="invalid-feedback"><?php echo $patient_username_err; ?></span>
       </div>
       <div class="form-group">

@@ -119,7 +119,7 @@ if (!empty($login_err))
   <div class="login-box">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form">
       <div class="form-group">
-        <input type="text" placeholder="Doctor Name" name="doctor_username" class="form-control <?php echo (!empty($doctor_username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $doctor_username; ?>">
+        <input type="text" placeholder="Doctor Username" name="doctor_username" class="form-control <?php echo (!empty($doctor_username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $doctor_username; ?>">
         <span class="invalid-feedback"><?php echo $doctor_username_err; ?></span>
       </div>
       <div class="form-group">

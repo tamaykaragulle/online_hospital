@@ -147,11 +147,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             mysqli_stmt_close($stmt);
         }
     }
-    else
-    {
-        echo "olmadi";
-    }
-
     // Close connection
     mysqli_close($link);
 }
@@ -167,7 +162,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   <div class="register-box">
       <form action="<?php $_PHP_SELF ?>" method="post" enctype="multipart/form">
         <div class="form-group">
-          <input type="text" placeholder="Doctor Name" name="doctor_username" class="form-control <?php echo (!empty($doctor_username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $doctor_username; ?>">
+          <input type="text" placeholder="Doctor Username" name="doctor_username" class="form-control <?php echo (!empty($doctor_username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $doctor_username; ?>">
           <span class="invalid-feedback"><?php echo $doctor_username_err; ?></span>
         </div>
         <div class="form-group">
