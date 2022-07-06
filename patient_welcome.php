@@ -5,20 +5,20 @@ $doctor_speciality = $statement = $get_help_speciality_err = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
-  if (empty(trim($_POST["doctor_speciality"])))
-  {
-      $doctor_speciality_err = "Please choose a speciality.";
-  }
-  else
-  {
+    if (empty(trim($_POST["doctor_speciality"])))
+    {
+        $doctor_speciality_err = "Please choose a speciality.";
+    }
+    else
+    {
 
-      $doctor_speciality = trim($_POST["doctor_speciality"]);
-      $statement = $link->prepare("SELECT doctor_name_surname FROM doctors WHERE doctor_speciality = ?");
-      $statement->bind_param("s", $doctor_speciality);
-      $statement->execute();
-      $statement->bind_result($result);
-      $doctor_name = "";
-  }
+        $doctor_speciality = trim($_POST["doctor_speciality"]);
+        $statement = $link->prepare("SELECT doctor_name_surname FROM doctors WHERE doctor_speciality = ?");
+        $statement->bind_param("s", $doctor_speciality);
+        $statement->execute();
+        $statement->bind_result($result);
+        $doctor_name = "";
+    }
 }
 
 ?>
@@ -32,9 +32,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <body>
     <?php
-      $patient_username = $_SESSION['patient_username'];
-      echo "Welcome $patient_username";
-    ?>
+$patient_username = $_SESSION['patient_username'];
+echo "Welcome $patient_username";
+?>
     <form action="<?php $_PHP_SELF ?>" method="post" enctype="multipart/form">
       <div class="form-group">
         <label for="doctor_speciality">Which speciality you want help with :</label>
@@ -66,12 +66,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
       <select>
         <option selected="selected">Choose your doctor</option>
         <?php
-            foreach ($statement->get_result() as $row)
-            {
-                $doctor_name_surname = $row['doctor_name_surname'];
-                echo "<option value='strtolower($doctor_name_surname)'>$doctor_name_surname</option>";
-            }
-         ?>
+foreach ($statement->get_result() as $row)
+{
+    $doctor_name_surname = $row['doctor_name_surname'];
+    echo "<option value='strtolower($doctor_name_surname)'>$doctor_name_surname</option>";
+}
+?>
       </select>
       <input type="submit" value="Check doctor" />
     </form>

@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         if ($stmt = mysqli_prepare($link, $sql))
         {
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_doctor_name_surname,$param_doctor_age);
+            mysqli_stmt_bind_param($stmt, "ss", $param_doctor_name_surname, $param_doctor_age);
 
             // Set parameters
             $param_doctor_name_surname = $doctor_name_surname;
@@ -94,8 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     mysqli_close($link);
 }
 
-
- ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -106,11 +105,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <body>
     <?php
-    //session_start();
-    $doctor_username = $_SESSION['doctor_username'];
-    echo "Welcome $doctor_username";
-    echo "<br>";
-     ?>
+//session_start();
+$doctor_username = $_SESSION['doctor_username'];
+echo "Welcome $doctor_username";
+echo "<br>";
+?>
      <form action="<?php $_PHP_SELF ?>" method="post" enctype="multipart/form">
        <div class="form-group">
          <label>Name and surname : </label>

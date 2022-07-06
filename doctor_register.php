@@ -146,8 +146,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             // Close statement
             mysqli_stmt_close($stmt);
         }
-    }else{
-      echo "olmadi";
+    }
+    else
+    {
+        echo "olmadi";
     }
 
     // Close connection
