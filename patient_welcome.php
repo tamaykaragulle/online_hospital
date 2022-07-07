@@ -2,23 +2,15 @@
 session_start();
 require_once "config.php";
 $doctor_speciality = $statement = $get_help_speciality_err = "";
-
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
-  if (empty(trim($_POST["doctor_speciality"])))
-  {
-      $doctor_speciality_err = "Please choose a speciality.";
-  }
-  else
-  {
-
-      $doctor_speciality = trim($_POST["doctor_speciality"]);
-      $_SESSION['doctor_speciality'] = $doctor_speciality;
-      $statement = $link->prepare("SELECT doctor_name_surname FROM doctors WHERE doctor_speciality = ?");
-      $statement->bind_param("s", $doctor_speciality);
-      $statement->execute();
-      $statement->bind_result($result);
-  }
+    $doctor_speciality = trim($_POST["doctor_speciality"]);
+    $_SESSION['doctor_speciality'] = $doctor_speciality;
+    $statement = $link->prepare("SELECT doctor_username, doctor_name_surname FROM doctors WHERE doctor_speciality = ?");
+    $statement->bind_param("s", $doctor_speciality);
+    $statement->execute();
+    $result = $statement->get_result();
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
 }
 
 ?>
@@ -38,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     <form action="<?php $_PHP_SELF ?>" method="post" enctype="multipart/form">
       <div class="form-group">
         <label for="doctor_speciality">Which speciality you want help with :</label>
-        <select id="doctor_speciality" name="doctor_speciality">
+        <select id="doctor_speciality" name="doctor_speciality"e>
           <option value="Anesthesiology">Anesthesiology</option>
           <option value="Dermatology">Dermatology</option>
           <option value="Diagnostic radiology">Diagnostic radiology</option>
@@ -66,14 +58,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
       <select name=selected_doctor>
         <option selected="selected">Choose your doctor</option>
         <?php
-            foreach ($statement->get_result() as $row)
+            foreach ($rows as $row)
             {
+                $doctor_username = $row['doctor_username'];
                 $doctor_name_surname = $row['doctor_name_surname'];
-                echo "<option value='($doctor_name_surname)'>$doctor_name_surname</option>";
+                echo "<option value='($doctor_username)'>$doctor_name_surname</option>";
             }
          ?>
       </select>
       <input type="submit" value="Check doctor" />
     </form>
+    <h3><a href="patient_login.php">Go back to login page</a></h3>
   </body>
 </html>

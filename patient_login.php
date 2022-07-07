@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     if (empty($username_err) && empty($patient_password_err))
     {
         // Prepare a select statemen
-        $sql = "SELECT id, patient_username, patient_password FROM patients WHERE patient_username = ?";
+        $sql = "SELECT patient_username, patient_password FROM patients WHERE patient_username = ?";
 
         if ($stmt = mysqli_prepare($link, $sql))
         {
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 if (mysqli_stmt_num_rows($stmt) == 1)
                 {
                     // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $patient_username, $hashed_password);
+                    mysqli_stmt_bind_result($stmt, $patient_username, $hashed_password);
                     if (mysqli_stmt_fetch($stmt))
                     {
                         if (password_verify($patient_password, $hashed_password))
@@ -128,7 +128,7 @@ if (!empty($login_err))
       </div>
         <input type="submit" value="Login" name="login-submit" id="login-submit">
         <h3>Don't have an account ? <a href="patient_register.php">Register</a></h3>
-        <h3><a href="choose.php">Choose</a></h3>
+        <h3><a href="choose.php">Choose doctor/patient</a></h3>
     </form>
   </div>
 </body>

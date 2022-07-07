@@ -24,4 +24,5 @@ function insertToDb():
         $statement->execute();
         return true;
     }
+
 ?>

@@ -3,8 +3,8 @@ require_once "config.php";
 session_start();
 $doctor_username = $_SESSION['doctor_username'];
 $result = $link->query("SELECT doctor_profile_photo FROM doctors WHERE doctor_username = '$doctor_username'");
-$resultt=mysqli_fetch_array($result);
-echo '<img class="profile-img" src="data:image/jpeg;base64,'.base64_encode( $resultt['doctor_profile_photo'] ).'"/>';
+$result=mysqli_fetch_array($result);
+echo '<img class="profile-img" src="data:image/jpeg;base64,'.base64_encode( $result['doctor_profile_photo'] ).'"/>';
  ?>
 <!DOCTYPE html>
 <html lang="tr">
@@ -20,12 +20,30 @@ echo '<img class="profile-img" src="data:image/jpeg;base64,'.base64_encode( $res
       echo "<br>";
     ?>
     <form action="upload_profile_photo.php" method="post" enctype="multipart/form-data">
-        <label>Select Image File:</label>
+        <label>Change profile photo : </label>
         <input type="file" name="image">
-        <input type="submit" name="submit" value="Upload">
+        <br />
+        <input type="submit" name="submit" value="Upload profile photo">
     </form>
-    <a class="button" href="edit_doctor_profile.php">Edit your profile</a>
-    <br />
-    <a class="button" href="logout.php">Logout</a>
+    <div>
+      <h2>Reservations</h2>
+      <br />
+      <?php
+        $sql = "SELECT patient_username, reservation_date FROM reservations WHERE doctor_username = '$doctor_username'";
+        $result = $link->query($sql);
+        if($result->num_rows > 0)
+        {
+          while ($row = $result->fetch_assoc()) {
+            echo $row['patient_username']." = ".$row['reservation_date'];
+            echo "<br />";
+          }
+        }
+        else {
+          echo "No reservations yet.";
+        }
+       ?>
+    </div>
+    <h3><a href="edit_doctor_profile.php">Edit your profile</a></h3>
+    <h3><a href="logout.php">Logout</a></h3>
   </body>
 </html>

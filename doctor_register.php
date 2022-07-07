@@ -17,17 +17,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     }
     else
     {
-        //
-        $sql = "SELECT id FROM doctors WHERE doctor_username = ?";
+        $doctor_username = $_POST["doctor_username"];
+
+        $sql = "SELECT doctor_username FROM doctors WHERE doctor_username = '$doctor_username'";
 
         if ($stmt = mysqli_prepare($link, $sql))
         {
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-
-            // Set parameters
-            $param_username = $_POST["doctor_username"];
-
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt))
             {
@@ -72,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     }
     else
     {
-        $sql = "SELECT id FROM doctors WHERE doctor_mail = ?";
+        $sql = "SELECT doctor_username FROM doctors WHERE doctor_mail = ?";
 
         if ($stmt = mysqli_prepare($link, $sql))
         {

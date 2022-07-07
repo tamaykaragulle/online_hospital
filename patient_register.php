@@ -17,17 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     }
     else
     {
-        $sql = "SELECT id FROM patients WHERE patient_username = ?";
+        $sql = "SELECT patient_username FROM patients WHERE patient_username = '$patient_username'";
 
         if ($stmt = mysqli_prepare($link, $sql))
         {
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-
-            // Set parameters
-            $param_username = $_POST["patient_username"];
-
-            // Attempt to execute the prepared statement
+          // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt))
             {
                 /* store result */
@@ -71,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     }
     else
     {
-        $sql = "SELECT id FROM patients WHERE patient_mail = ?";
+        $sql = "SELECT patient_username FROM patients WHERE patient_mail = ?";
 
         if ($stmt = mysqli_prepare($link, $sql))
         {
@@ -161,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
           <span class="invalid-feedback"><?php echo $patient_password_err; ?></span>
         </div>
         <div class="form-group">
-          <input type="email" placeholder="Patient E-Mail" maxlength="5" name="patient_mail" class="form-control <?php echo (!empty($patient_mail_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $patient_mail; ?>">
+          <input type="email" placeholder="Patient E-Mail" name="patient_mail" class="form-control <?php echo (!empty($patient_mail_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $patient_mail; ?>">
           <span class="invalid-feedback"><?php echo $patient_mail_err; ?></span>
         </div>
           <input type="submit" value="REGISTER" name="register-submit" id="register-submit">
