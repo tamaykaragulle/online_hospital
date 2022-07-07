@@ -3,8 +3,6 @@ require_once "config.php";
 session_start();
 $doctor_username = $_SESSION['doctor_username'];
 $result = $link->query("SELECT doctor_profile_photo FROM doctors WHERE doctor_username = '$doctor_username'");
-//$sql = "SELECT * FROM products WHERE id = $id";
-//$sth = $db->query($sql);
 $resultt=mysqli_fetch_array($result);
 echo '<img class="profile-img" src="data:image/jpeg;base64,'.base64_encode( $resultt['doctor_profile_photo'] ).'"/>';
  ?>
