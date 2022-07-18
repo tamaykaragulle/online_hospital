@@ -108,28 +108,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 <head>
   <title>Choose</title>
 </head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-<body>
+<link rel="stylesheet" href="Style.css">
+<body style="background-color:#2596be">
   <?php
 if (!empty($login_err))
 {
     echo '<div class="alert alert-danger">' . $login_err . '</div>';
 }
 ?>
-  <div class="login-box">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form">
-      <div class="form-group">
-        <input type="text" placeholder="Patient Userame" name="patient_username" class="form-control <?php echo (!empty($patient_username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $patient_username; ?>">
+        <input type="text" id="username-input" placeholder="Patient Userame" name="patient_username" class="form-control <?php echo (!empty($patient_username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $patient_username; ?>">
         <span class="invalid-feedback"><?php echo $patient_username_err; ?></span>
-      </div>
-      <div class="form-group">
-        <input type="password" placeholder="Patient Password" name="patient_password" class="form-control <?php echo (!empty($patient_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $patient_password; ?>">
+        <br />
+        <input type="password" id="password-input" placeholder="Patient Password" name="patient_password" class="form-control <?php echo (!empty($patient_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $patient_password; ?>">
         <span class="invalid-feedback"><?php echo $patient_password_err; ?></span>
-      </div>
-        <input type="submit" value="Login" name="login-submit" id="login-submit">
+        <br />
+        <input type="submit" id="submit" value="Login" name="login-submit" id="login-submit">
         <h3>Don't have an account ? <a href="PatientRegister.php">Register</a></h3>
         <h3><a href="Choose.php">Choose doctor/patient</a></h3>
     </form>
-  </div>
 </body>
 </html>

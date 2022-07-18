@@ -23,32 +23,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     <meta charset="utf-8">
     <title></title>
   </head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-  <body>
+  <link rel="stylesheet" href="Style.css">
+  <body style="background-color:#2596be">
     <?php
       $patient_username = $_SESSION['patient_username'];
-      echo "Welcome $patient_username";
-      echo "<br />";
-      echo "<br />";
-      $stmt = $link->prepare("SELECT reservation_date,doctor_name_surname FROM reservations WHERE patient_username = '$patient_username'");
-      $stmt->execute();
-      $result2 = $stmt->get_result();
-      $rows2 = $result2->fetch_all(MYSQLI_ASSOC);
-      echo "Reservations : ";
-      echo "<br />";
-      foreach ($rows2 as $row)
-      {
-          $reservation_date = $row['reservation_date'];
-          $doctor_name_surname = $row['doctor_name_surname'];
-          echo "$doctor_name_surname = $reservation_date";
-          echo "<br />";
-      }
-      echo "<br />";
+      echo "<h1>Welcome $patient_username</h1>";
     ?>
+    <div class="reservations-box">
+      <?php
+        $stmt = $link->prepare("SELECT reservation_date,doctor_name_surname FROM reservations WHERE patient_username = '$patient_username'");
+        $stmt->execute();
+        $result2 = $stmt->get_result();
+        $rows2 = $result2->fetch_all(MYSQLI_ASSOC);
+        echo "<h3>RESERVATIONS</h3>";
+        foreach ($rows2 as $row)
+        {
+            $reservation_date = $row['reservation_date'];
+            $doctor_name_surname = $row['doctor_name_surname'];
+            echo "<h4>$doctor_name_surname = $reservation_date</h4>";
+        }
+      ?>
+    </div>
     <form action="<?php $_PHP_SELF ?>" method="post" enctype="multipart/form">
-      <div class="form-group">
         <label for="doctor_speciality">Which speciality you want help with :</label>
-        <select id="doctor_speciality" name="doctor_speciality"e>
+        <select id="select-box" name="doctor_speciality"e>
           <option value="Anesthesiology">Anesthesiology</option>
           <option value="Dermatology">Dermatology</option>
           <option value="Diagnostic radiology">Diagnostic radiology</option>
@@ -69,11 +67,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
           <option value="Surgery">Surgery</option>
           <option value="Urology">Urology</option>
         </select>
-        <input type="submit" value="Get Help" name="get-help-submit" id="get-help-submit">
-      </div>
+        <input type="submit" value="Get Help" name="get-help-submit" id="submit">
     </form>
     <form action="CheckDoctor.php" method="post" enctype="multipart/form">
-      <select name=selected_doctor>
+      <select id="select-box" name=selected_doctor>
         <option selected="selected">Choose a doctor</option>
         <?php
             foreach ($rows as $row)
@@ -84,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             }
          ?>
       </select>
-      <input type="submit" value="Check doctor" />
+      <input type="submit" id="submit" value="Check doctor" />
     </form>
     <h3><a href="PatientLogin.php">Go back to login page</a></h3>
   </body>

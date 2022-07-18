@@ -1,3 +1,156 @@
 .profile-img {
 	max-width: 5%;
 }
+
+.reservations-box {
+	background-color: #154c79;
+	width: 400px;
+	box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;}
+
+#username-input
+{
+	padding:5px;
+	border:2px solid #ccc;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	margin-bottom:10px;
+	font-family: 'Raleway',sans-serif;
+	width: 150px;
+	transition: ease-in-out, width .35s ease-in-out;
+}
+
+#username-input:focus {
+  outline: none !important;
+	border-color: #00ffcc;
+  box-shadow: 0 0 10px #719ECE;
+	width: 250px;
+}
+
+#password-input
+{
+	padding:5px;
+	border:2px solid #ccc;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	font-family: 'Raleway',sans-serif;
+	margin-bottom:10px;
+	width: 150px;
+	transition: ease-in-out, width .35s ease-in-out;
+}
+
+#password-input:focus {
+  outline: none !important;
+  border-color: #00ffcc;
+  box-shadow: 0 0 10px #719ECE;
+	width: 250px;
+}
+
+#email-input
+{
+	padding:5px;
+	border:2px solid #ccc;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	font-family: 'Raleway',sans-serif;
+	margin-bottom:10px;
+	width: 150px;
+	transition: ease-in-out, width .35s ease-in-out;
+}
+
+#email-input:focus {
+  outline: none !important;
+  border-color: #00ffcc;
+  box-shadow: 0 0 10px #719ECE;
+	width: 250px;
+}
+
+#submit {
+	padding:5px 15px;
+	color:#ffffff;
+  background:#000000;
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#submit:focus {
+  outline: none !important;
+  border:1px solid #00ffcc;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+#doctor-image {
+	padding-left: 6em;
+  padding-right: 6em;
+}
+
+#patient-image {
+	padding-left: 6em;
+  padding-right: 6em;
+}
+
+h1 {
+	color: #ffffff;
+	font-family: 'Raleway',sans-serif;
+	font-size: 20px;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+h3 {
+	color: #ffffff;
+	font-family: 'Raleway',sans-serif;
+	font-size: 20px;
+	font-weight: 800;
+	line-height: 72px;
+	text-transform: uppercase;
+	text-align: center
+}
+
+h4 {
+	color: #ffffff;
+	font-family: 'Raleway',sans-serif;
+	font-size: 15px;
+}
+
+a {
+	color: #ffffff;
+	font-family: 'Raleway',sans-serif;
+	font-size: 20px;
+	font-weight: 800;
+	line-height: 72px;
+	text-transform: uppercase;
+}
+
+#select-box {
+	position: relative;
+  border: 3px solid #73AD21;
+	padding:5px;
+	border:2px solid #ccc;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	font-family: 'Raleway',sans-serif;
+	margin-bottom:10px;
+	width: 150px;
+	transition: ease-in-out, width .35s ease-in-out;
+}
+
+#register-submit {
+	position: relative;
+  left: 160px;
+	top: -38px;
+	padding:5px 15px;
+	color:#ffffff;
+  background:#000000;
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#register-submit:focus {
+  outline: none !important;
+  border:1px solid #00ffcc;
+  box-shadow: 0 0 10px #719ECE;
+}

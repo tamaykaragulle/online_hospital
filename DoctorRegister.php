@@ -152,25 +152,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 <head>
   <title>Choose</title>
 </head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-<body>
-  <div class="register-box">
+<link rel="stylesheet" href="Style.css">
+<body style="background-color:#2596be">
       <form action="<?php $_PHP_SELF ?>" method="post" enctype="multipart/form">
-        <div class="form-group">
-          <input type="text" placeholder="Doctor Username" name="doctor_username" class="form-control <?php echo (!empty($doctor_username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $doctor_username; ?>">
+          <input type="text" id="username-input" placeholder="Doctor Username" name="doctor_username" class="form-control <?php echo (!empty($doctor_username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $doctor_username; ?>">
           <span class="invalid-feedback"><?php echo $doctor_username_err; ?></span>
-        </div>
+        <br />
         <div class="form-group">
-          <input type="password" placeholder="Doctor Password" name="doctor_password" class="form-control <?php echo (!empty($doctor_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $doctor_password; ?>">
+          <input type="password" id="password-input" placeholder="Doctor Password" name="doctor_password" class="form-control <?php echo (!empty($doctor_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $doctor_password; ?>">
           <span class="invalid-feedback"><?php echo $doctor_password_err; ?></span>
-        </div>
-        <div class="form-group">
-          <input type="email" placeholder="Doctor E-Mail" name="doctor_mail" class="form-control <?php echo (!empty($doctor_mail_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $doctor_mail; ?>">
+        <br />
+          <input type="email" id="email-input" placeholder="Doctor E-Mail" name="doctor_mail" class="form-control <?php echo (!empty($doctor_mail_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $doctor_mail; ?>">
           <span class="invalid-feedback"><?php echo $doctor_mail_err; ?></span>
-        </div>
-        <div class="form-group">
-          <label <for="doctor_speciality">Choose speciality : </label>
-          <select id="doctor_speciality" name="doctor_speciality">
+        <br />
+          <h2>Choose speciality : </h2>
+          <select id="select-box" name="doctor_speciality">
             <option value="Anesthesiology">Anesthesiology</option>
             <option value="Dermatology">Dermatology</option>
             <option value="Diagnostic radiology">Diagnostic radiology</option>
@@ -191,11 +187,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             <option value="Surgery">Surgery</option>
             <option value="Urology">Urology</option>
           </select>
-        </div>
-          <input type="submit" value="REGISTER" name="register-submit" id="register-submit">
-          <h3>Already a user? <a href="DoctorLogin.php">Login</a></h3>
-          <h3><a href="Choose.php">Choose doctor/patient</a></h3>
+        <br />
+        <input type="submit" id="register-submit" value="REGISTER" name="register-submit" id="register-submit">
+        <h3>Already a user? <a href="DoctorLogin.php">Login</a></h3>
+        <h3><a href="Choose.php">Choose doctor/patient</a></h3>
       </form>
-  </div>
 </body>
 </html>
