@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "config.php";
+require_once "Config.php";
 
 $doctor_username = $reservation_date_err = $doctor_name_surname = $patient_username = $reservation_date = "";
 
@@ -53,11 +53,11 @@ if (!empty($_POST['reservation_date']))
 
      ?>
     <form action="<?php $_PHP_SELF ?>" method="post">
-      <input type="date" name="reservation_date" class="form-control <?php echo (!empty($reservation_date_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $reservation_date_err; ?>"/>
+      <input type="date" name="reservation_date" min="<?= date('Y-m-d'); ?>"class="form-control <?php echo (!empty($reservation_date_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $reservation_date_err; ?>"/>
       <span class="invalid-feedback"><?php echo $reservation_date_err; ?></span>
       <br />
       <input type="submit" value="Get A Reservation"/>
     </form>
-    <h3><a href="patient_welcome.php">Go back</a></h3>
+    <h3><a href="PatientWelcome.php">Go back</a></h3>
   </body>
 </html>
